@@ -1,9 +1,9 @@
 package com.skill_centric.mvpdemo;
 
-public class Student {
+public class StudentRepository {
 
     public void saveStudentToDb(){
 
-        // some logic here...
+        // the logic to save a student into a database...
     }
 }
