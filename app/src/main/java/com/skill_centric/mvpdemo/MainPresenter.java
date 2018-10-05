@@ -1,8 +1,12 @@
 package com.skill_centric.mvpdemo;
 
-public class MainPresenter {
 
-    MainActivity view;
+import com.arellomobile.mvp.InjectViewState;
+import com.arellomobile.mvp.MvpPresenter;
+
+@InjectViewState
+public class MainPresenter extends MvpPresenter<MoxyView> {
+
     private final StudentRepository studentRepository;
 
     public MainPresenter() {
@@ -10,18 +14,11 @@ public class MainPresenter {
         studentRepository = new StudentRepository();
     }
 
-    public MainActivity getView() {
-        return view;
-    }
-
-    public void setView(MainActivity view) {
-        this.view = view;
-    }
 
     public void onFabClick() {
 
         studentRepository.saveStudentToDb();
 
-        view.confirmStudentSaved();
+        getViewState().confirmStudentSaved();
     }
 }

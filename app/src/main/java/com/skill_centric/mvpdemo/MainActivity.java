@@ -10,8 +10,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import com.arellomobile.mvp.MvpAppCompatActivity;
+import com.arellomobile.mvp.presenter.InjectPresenter;
 
+public class MainActivity extends MvpAppCompatActivity implements MoxyView{
+
+    @InjectPresenter
     MainPresenter presenter;
 
     @Override
@@ -21,9 +25,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        presenter = new MainPresenter();
-        presenter.setView(this);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
     public void confirmStudentSaved() {
 
         Toast.makeText(this, "Student is saved to database!",
